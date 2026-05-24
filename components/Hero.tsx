@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { Phone, MessageCircle, ChevronDown, Shield, Clock, Award } from 'lucide-react'
+import Image from 'next/image'
 
 const trustBadges = [
   { icon: Shield, label: 'Licensed & Insured' },
@@ -16,14 +17,26 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-forge-black">
-      {/* Background layers */}
+      {/* Background image */}
       <div className="absolute inset-0 z-0">
-        {/* Dark gradient base */}
-        <div className="absolute inset-0 bg-gradient-to-br from-black via-forge-dark to-forge-charcoal" />
+        <Image
+          src="/background.png"
+          alt="LV Welding craftsmanship"
+          fill
+          className="object-cover object-center"
+          priority
+        />
+        {/* Dark overlay to ensure text readability */}
+        <div className="absolute inset-0 bg-black/70" />
+        {/* Gradient overlay for depth */}
+        <div className="absolute inset-0 bg-gradient-to-r from-forge-black/90 via-forge-black/70 to-forge-black/40" />
+      </div>
 
+      {/* Decorative overlays */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
         {/* Grid pattern overlay */}
         <div
-          className="absolute inset-0 opacity-[0.04]"
+          className="absolute inset-0 opacity-[0.03]"
           style={{
             backgroundImage: `
               linear-gradient(rgba(255,255,255,0.3) 1px, transparent 1px),
@@ -32,36 +45,10 @@ export default function Hero() {
             backgroundSize: '60px 60px',
           }}
         />
-
         {/* Red glow top-right */}
         <div className="absolute -top-40 -right-40 w-[700px] h-[700px] rounded-full bg-forge-red/8 blur-[120px]" />
-
         {/* Ember glow bottom-left */}
         <div className="absolute -bottom-40 -left-40 w-[500px] h-[500px] rounded-full bg-forge-ember/5 blur-[100px]" />
-
-        {/* Diagonal steel lines decorative */}
-        <div className="absolute bottom-0 right-0 w-full h-full overflow-hidden opacity-10">
-          <div
-            className="absolute bottom-0 right-0 w-2/3 h-full"
-            style={{
-              background: 'linear-gradient(135deg, transparent 40%, rgba(220,38,38,0.15) 100%)',
-            }}
-          />
-        </div>
-      </div>
-
-      {/* Hero image placeholder — replace src with real welding photo */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-r from-forge-black via-forge-black/85 to-forge-black/60 z-10" />
-        {/*
-          PHOTO PLACEHOLDER:
-          Replace the div below with an <Image> component pointing to a real welding project photo.
-          Recommended: a cinematic shot of sparks flying or a finished custom gate/railing.
-
-          Example:
-          <Image src="/images/hero-bg.jpg" alt="LV Welding craftsmanship" fill className="object-cover object-center" priority />
-        */}
-        <div className="absolute inset-0 bg-gradient-to-br from-forge-charcoal/50 to-forge-dark z-0" />
       </div>
 
       {/* Content */}
@@ -114,39 +101,34 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.65 }}
             className="flex flex-wrap gap-4 mb-14"
           >
-            <button
-              onClick={scrollToContact}
-              className="gradient-red text-white font-bold text-base px-8 py-4 rounded hover:opacity-90 active:scale-95 transition-all duration-200 shadow-xl hover:shadow-red-500/30 uppercase tracking-wider"
-            >
-              Get Free Estimate
-            </button>
             <a
               href="tel:7867447479"
-              className="flex items-center gap-3 border border-white/20 hover:border-white/50 text-white font-semibold text-base px-8 py-4 rounded transition-all duration-200 backdrop-blur-sm hover:bg-white/5"
+              className="flex items-center gap-2 border border-white/20 text-white font-bold text-base px-8 py-4 rounded hover:bg-white/10 active:scale-95 transition-all duration-200 uppercase tracking-wider"
             >
-              <Phone size={16} className="text-forge-red" />
+              <Phone size={18} />
               (786) 744-7479
             </a>
-            <a
-              href="sms:7867447479"
-              className="flex items-center gap-3 border border-white/10 hover:border-white/30 text-forge-light hover:text-white font-medium text-base px-6 py-4 rounded transition-all duration-200"
+
+            <button
+              onClick={scrollToContact}
+              className="flex items-center gap-2 border border-white/20 text-white font-semibold text-base px-8 py-4 rounded hover:bg-white/10 active:scale-95 transition-all duration-200"
             >
-              <MessageCircle size={16} className="text-forge-ember" />
+              <MessageCircle size={18} />
               Text Us
-            </a>
+            </button>
           </motion.div>
 
           {/* Trust badges */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.85 }}
+            transition={{ duration: 0.6, delay: 0.85 }}
             className="flex flex-wrap gap-6"
           >
             {trustBadges.map(({ icon: Icon, label }) => (
-              <div key={label} className="flex items-center gap-2">
+              <div key={label} className="flex items-center gap-2 text-forge-gray text-sm">
                 <Icon size={15} className="text-forge-red" />
-                <span className="text-forge-light text-sm font-medium">{label}</span>
+                {label}
               </div>
             ))}
           </motion.div>
@@ -157,16 +139,11 @@ export default function Hero() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-forge-gray"
+        transition={{ duration: 0.6, delay: 1.2 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-forge-gray z-10"
       >
-        <span className="text-xs tracking-[0.2em] uppercase">Scroll</span>
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
-        >
-          <ChevronDown size={18} />
-        </motion.div>
+        <span className="text-[10px] tracking-[0.3em] uppercase">Scroll</span>
+        <ChevronDown size={16} className="animate-bounce" />
       </motion.div>
     </section>
   )
