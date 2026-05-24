@@ -45,7 +45,7 @@ export default function Footer() {
                 height={56}
                 className="h-12 w-auto object-contain"
               />
-            </div> </div>
+            </div>
 
             <p className="text-forge-gray text-sm leading-relaxed mb-6">
               Custom metal fabrication built to last. Serving South Florida since 2018
