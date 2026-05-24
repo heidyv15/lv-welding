@@ -1,8 +1,7 @@
 'use client'
 
-import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Phone, MessageCircle, Instagram, MapPin, Mail, Clock, Send, ExternalLink } from 'lucide-react'
+import { Phone, MessageCircle, Instagram, MapPin, Mail, Clock, ExternalLink } from 'lucide-react'
 
 const contactMethods = [
   {
@@ -40,59 +39,8 @@ const contactMethods = [
   },
 ]
 
-type FormData = {
-  name: string
-  phone: string
-  email: string
-  service: string
-  message: string
-}
-
-const services = [
-  'Custom Gates & Fencing',
-  'Railings & Balconies',
-  'Custom Staircases',
-  'Structural Steel',
-  'Ornamental Ironwork',
-  'Metal Repairs',
-  'Storm Damage Repair',
-  'Aluminum Fabrication',
-  'Other / Custom Project',
-]
 
 export default function Contact() {
-  const [form, setForm] = useState<FormData>({
-    name: '',
-    phone: '',
-    email: '',
-    service: '',
-    message: '',
-  })
-  const [submitted, setSubmitted] = useState(false)
-  const [submitting, setSubmitting] = useState(false)
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-  ) => {
-    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
-  }
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setSubmitting(true)
-    /*
-      FORM SUBMISSION PLACEHOLDER
-      Connect to your preferred form handler:
-      - Formspree: https://formspree.io
-      - EmailJS: https://emailjs.com
-      - Custom API route: /api/contact
-      Replace this timeout with your actual submission logic.
-    */
-    await new Promise((r) => setTimeout(r, 1200))
-    setSubmitting(false)
-    setSubmitted(true)
-  }
-
   return (
     <section id="contact" className="relative py-28 bg-forge-black overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-forge-red/30 to-transparent" />
@@ -121,19 +69,17 @@ export default function Contact() {
             Ready to Start<br />Your Project?
           </h2>
           <p className="text-forge-light text-lg max-w-lg mx-auto leading-relaxed">
-            Get a free estimate — no obligation. Call, text, or fill out the form
-            and we&apos;ll get back to you fast.
-          </p>
+            Call, text, or message us directly. We respond fast and serve all of South Florida.</p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
           {/* Contact methods */}
           <motion.div
             initial={{ opacity: 0, x: -24 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-2 space-y-4"
+            className="space-y-4"
           >
             {contactMethods.map((method) => (
               <a
@@ -196,152 +142,6 @@ export default function Contact() {
               View Google Business Profile
               <ExternalLink size={13} />
             </a>
-          </motion.div>
-
-          {/* Estimate form */}
-          <motion.div
-            initial={{ opacity: 0, x: 24 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="lg:col-span-3"
-          >
-            <div className="bg-forge-charcoal border border-white/5 rounded-2xl p-8">
-              <h3 className="font-display font-700 text-white text-2xl uppercase tracking-wide mb-2">
-                Free Project Estimate
-              </h3>
-              <p className="text-forge-gray text-sm mb-8">
-                Fill out the form and we&apos;ll follow up within a few hours.
-              </p>
-
-              {submitted ? (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  className="text-center py-16"
-                >
-                  <div className="w-16 h-16 gradient-red rounded-full flex items-center justify-center mx-auto mb-5">
-                    <Send size={24} className="text-white" />
-                  </div>
-                  <h4 className="font-display font-700 text-white text-2xl uppercase mb-3">
-                    Message Sent!
-                  </h4>
-                  <p className="text-forge-light text-sm max-w-sm mx-auto">
-                    Thanks for reaching out. We&apos;ll review your request and get back to you shortly.
-                    For urgent needs, call us directly at{' '}
-                    <a href="tel:7867447479" className="text-forge-red font-semibold">
-                      (786) 744-7479
-                    </a>
-                    .
-                  </p>
-                </motion.div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-5">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    <div>
-                      <label className="block text-forge-gray text-xs uppercase tracking-wider mb-2">
-                        Full Name *
-                      </label>
-                      <input
-                        name="name"
-                        type="text"
-                        required
-                        value={form.name}
-                        onChange={handleChange}
-                        placeholder="Your name"
-                        className="w-full bg-forge-steel border border-white/8 rounded-lg px-4 py-3 text-white text-sm placeholder:text-forge-iron focus:outline-none focus:border-forge-red/50 focus:bg-forge-steel/80 transition-all duration-200"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-forge-gray text-xs uppercase tracking-wider mb-2">
-                        Phone Number *
-                      </label>
-                      <input
-                        name="phone"
-                        type="tel"
-                        required
-                        value={form.phone}
-                        onChange={handleChange}
-                        placeholder="(305) 000-0000"
-                        className="w-full bg-forge-steel border border-white/8 rounded-lg px-4 py-3 text-white text-sm placeholder:text-forge-iron focus:outline-none focus:border-forge-red/50 transition-all duration-200"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-forge-gray text-xs uppercase tracking-wider mb-2">
-                      Email Address
-                    </label>
-                    <input
-                      name="email"
-                      type="email"
-                      value={form.email}
-                      onChange={handleChange}
-                      placeholder="your@email.com"
-                      className="w-full bg-forge-steel border border-white/8 rounded-lg px-4 py-3 text-white text-sm placeholder:text-forge-iron focus:outline-none focus:border-forge-red/50 transition-all duration-200"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-forge-gray text-xs uppercase tracking-wider mb-2">
-                      Service Needed *
-                    </label>
-                    <select
-                      name="service"
-                      required
-                      value={form.service}
-                      onChange={handleChange}
-                      className="w-full bg-forge-steel border border-white/8 rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-forge-red/50 transition-all duration-200 appearance-none"
-                    >
-                      <option value="" className="bg-forge-charcoal text-forge-gray">
-                        Select a service...
-                      </option>
-                      {services.map((s) => (
-                        <option key={s} value={s} className="bg-forge-charcoal">
-                          {s}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-
-                  <div>
-                    <label className="block text-forge-gray text-xs uppercase tracking-wider mb-2">
-                      Project Details
-                    </label>
-                    <textarea
-                      name="message"
-                      rows={4}
-                      value={form.message}
-                      onChange={handleChange}
-                      placeholder="Describe your project — location, size, materials, timeline..."
-                      className="w-full bg-forge-steel border border-white/8 rounded-lg px-4 py-3 text-white text-sm placeholder:text-forge-iron focus:outline-none focus:border-forge-red/50 transition-all duration-200 resize-none"
-                    />
-                  </div>
-
-                  <button
-                    type="submit"
-                    disabled={submitting}
-                    className="w-full gradient-red text-white font-bold uppercase tracking-wider text-sm py-4 rounded-lg hover:opacity-90 active:scale-[0.99] transition-all duration-200 disabled:opacity-60 flex items-center justify-center gap-3 shadow-lg hover:shadow-red-500/25"
-                  >
-                    {submitting ? (
-                      <>
-                        <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                        Sending...
-                      </>
-                    ) : (
-                      <>
-                        <Send size={15} />
-                        Request Free Estimate
-                      </>
-                    )}
-                  </button>
-
-                  <p className="text-forge-gray text-xs text-center">
-                    No spam, no obligation. We&apos;ll only use your info to follow up on your project.
-                  </p>
-                </form>
-              )}
-            </div>
           </motion.div>
         </div>
       </div>
