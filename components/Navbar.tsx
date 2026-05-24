@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Phone, Menu, X } from 'lucide-react'
+import Image from 'next/image'
 
 const navLinks = [
   { label: 'Services', href: '#services' },
@@ -45,19 +46,16 @@ export default function Navbar() {
           <a
             href="#"
             onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }) }}
-            className="flex items-center gap-3 group"
+            className="flex items-center group"
           >
-            <div className="w-10 h-10 gradient-red rounded flex items-center justify-center shadow-lg group-hover:shadow-red-500/30 transition-shadow duration-300">
-              <span className="font-display font-900 text-white text-lg leading-none">LV</span>
-            </div>
-            <div>
-              <div className="font-display font-700 text-white text-lg leading-tight tracking-wide">
-                LV WELDING
-              </div>
-              <div className="text-forge-light text-[10px] tracking-[0.2em] uppercase leading-none">
-                Services
-              </div>
-            </div>
+            <Image
+              src="/LOGO.jpg"
+              alt="LV Welding Services"
+              width={160}
+              height={56}
+              className="h-12 w-auto object-contain"
+              priority
+            />
           </a>
 
           {/* Desktop nav */}
@@ -82,13 +80,6 @@ export default function Navbar() {
             >
               <Phone size={14} className="text-forge-red" />
               (786) 744-7479
-            </a>
-            <a
-              href="#contact"
-              onClick={(e) => { e.preventDefault(); handleNavClick('#contact') }}
-              className="gradient-red text-white text-sm font-semibold px-5 py-2.5 rounded hover:opacity-90 transition-opacity duration-200 shadow-lg hover:shadow-red-500/25"
-            >
-              Free Estimate
             </a>
           </div>
 
@@ -137,13 +128,6 @@ export default function Navbar() {
                   <Phone size={16} />
                 </div>
                 (786) 744-7479
-              </a>
-              <a
-                href="#contact"
-                onClick={(e) => { e.preventDefault(); handleNavClick('#contact') }}
-                className="block gradient-red text-white text-center font-bold text-lg py-4 rounded-lg"
-              >
-                Get Free Estimate
               </a>
             </div>
           </motion.div>
