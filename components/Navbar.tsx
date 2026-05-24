@@ -75,7 +75,7 @@ export default function Navbar() {
           {/* CTA */}
           <div className="hidden md:flex items-center gap-3">
             <a
-              href="tel:7867447479"
+              href="tel:7865066327"
               className="flex items-center gap-2 text-forge-light hover:text-white text-sm font-medium transition-colors duration-200"
             >
               <Phone size={14} className="text-forge-red" />
@@ -127,7 +127,7 @@ export default function Navbar() {
                 <div className="w-10 h-10 gradient-red rounded-full flex items-center justify-center">
                   <Phone size={16} />
                 </div>
-                (786) 744-7479
+                (786) 506-6327
               </a>
             </div>
           </motion.div>
