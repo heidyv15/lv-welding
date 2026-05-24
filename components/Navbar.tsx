@@ -79,7 +79,7 @@ export default function Navbar() {
               className="flex items-center gap-2 text-forge-light hover:text-white text-sm font-medium transition-colors duration-200"
             >
               <Phone size={14} className="text-forge-red" />
-              (786) 744-7479
+              (786) 506-6327
             </a>
           </div>
 
