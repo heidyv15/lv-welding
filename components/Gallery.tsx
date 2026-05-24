@@ -2,15 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { ExternalLink, Instagram } from 'lucide-react'
-
-/*
-  PHOTO PLACEHOLDERS
-  Replace the placeholder divs with real <Image> components once photos are available.
-  Suggested sources:
-  - Instagram: @lvwelding
-  - Direct uploads to /public/images/
-  - Google Business Profile photos
-*/
+import Image from 'next/image'
 
 const projects = [
   {
@@ -18,7 +10,7 @@ const projects = [
     title: 'Custom Driveway Gate',
     category: 'Gates & Entry',
     description: 'Heavy-duty ornamental iron driveway gate with automated opener integration.',
-    color: 'from-forge-iron to-forge-charcoal',
+    image: '/customgate.png',
     size: 'large', // spans 2 columns on desktop
   },
   {
@@ -26,7 +18,7 @@ const projects = [
     title: 'Interior Staircase Railing',
     category: 'Railings',
     description: 'Modern steel railing system for a residential staircase in Coral Gables.',
-    color: 'from-forge-steel to-forge-charcoal',
+    image: '/interiorstaircase.png',
     size: 'normal',
   },
   {
@@ -34,7 +26,7 @@ const projects = [
     title: 'Commercial Security Fencing',
     category: 'Fencing',
     description: 'Perimeter security fencing for commercial property — built to spec.',
-    color: 'from-forge-charcoal to-forge-dark',
+    image: '/securityfence.png',
     size: 'normal',
   },
   {
@@ -42,7 +34,7 @@ const projects = [
     title: 'Floating Steel Staircase',
     category: 'Staircases',
     description: 'Custom floating staircase fabricated and installed in a Miami residence.',
-    color: 'from-forge-iron to-forge-steel',
+    image: '/floatingstair.png',
     size: 'normal',
   },
   {
@@ -50,7 +42,7 @@ const projects = [
     title: 'Ornamental Balcony Railing',
     category: 'Railings',
     description: 'Decorative iron balcony railing with custom scrollwork in Fort Lauderdale.',
-    color: 'from-forge-steel to-forge-dark',
+    image: '/ornamental.png',
     size: 'normal',
   },
   {
@@ -58,7 +50,7 @@ const projects = [
     title: 'Structural Steel Frame',
     category: 'Structural',
     description: 'Steel frame fabrication for a commercial addition — code compliant.',
-    color: 'from-forge-charcoal to-forge-iron',
+    image: '/steelframe.png',
     size: 'large',
   },
 ]
@@ -116,7 +108,7 @@ export default function Gallery() {
           {projects.map((project, i) => (
             <motion.div
               key={project.id}
-              initial={{ opacity: 0, y: 28 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
@@ -124,26 +116,18 @@ export default function Gallery() {
                 project.size === 'large' ? 'sm:col-span-2' : ''
               }`}
             >
-              {/*
-                PHOTO PLACEHOLDER
-                Replace this div with:
-                <Image src="/images/project-N.jpg" alt={project.title} fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
-              */}
+              {/* Project image */}
               <div
-                className={`w-full bg-gradient-to-br ${project.color} flex items-center justify-center`}
+                className="relative w-full overflow-hidden bg-forge-charcoal"
                 style={{ height: project.size === 'large' ? '360px' : '280px' }}
               >
-                {/* Placeholder visual */}
-                <div className="text-center px-8 opacity-30">
-                  <div className="w-16 h-16 border-2 border-forge-gray rounded-full flex items-center justify-center mx-auto mb-3">
-                    <span className="text-forge-gray text-2xl font-display font-bold">
-                      {project.id}
-                    </span>
-                  </div>
-                  <p className="text-forge-gray text-xs tracking-wider uppercase">
-                    Photo Coming Soon
-                  </p>
-                </div>
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                />
               </div>
 
               {/* Overlay on hover */}
@@ -159,7 +143,7 @@ export default function Gallery() {
 
               {/* Category badge */}
               <div className="absolute top-4 left-4 opacity-100 group-hover:opacity-0 transition-opacity duration-300">
-                <span className="text-[10px] font-bold tracking-widest uppercase text-white/70 bg-black/50 backdrop-blur-sm border border-white/10 px-2.5 py-1 rounded-full">
+                <span className="text-[10px] font-bold tracking-widest uppercase text-white bg-black/60 backdrop-blur-sm border border-white/10 px-2.5 py-1 rounded-full">
                   {project.category}
                 </span>
               </div>
@@ -169,7 +153,7 @@ export default function Gallery() {
 
         {/* Instagram CTA */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3 }}
