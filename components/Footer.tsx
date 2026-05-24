@@ -54,14 +54,14 @@ export default function Footer() {
 
             <div className="space-y-3">
               <a
-                href="tel:7867447479"
+                href="tel:7865066327"
                 className="flex items-center gap-3 text-forge-light hover:text-white text-sm transition-colors group"
               >
                 <Phone size={14} className="text-forge-red group-hover:text-forge-red" />
                 (786) 744-7479
               </a>
               <a
-                href="sms:7867447479"
+                href="sms:7865066327"
                 className="flex items-center gap-3 text-forge-light hover:text-white text-sm transition-colors group"
               >
                 <MessageCircle size={14} className="text-forge-ember" />
