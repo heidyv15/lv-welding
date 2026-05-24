@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { Phone, MessageCircle, Instagram, MapPin, Clock, ExternalLink } from 'lucide-react'
 
 const quickLinks = [
@@ -36,19 +37,15 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           {/* Brand column */}
           <div className="lg:col-span-1">
-            <div className="flex items-center gap-3 mb-5">
-              <div className="w-10 h-10 gradient-red rounded flex items-center justify-center shadow-lg">
-                <span className="font-display font-800 text-white text-lg leading-none">LV</span>
-              </div>
-              <div>
-                <div className="font-display font-700 text-white text-lg leading-tight tracking-wide">
-                  LV WELDING
-                </div>
-                <div className="text-forge-light text-[10px] tracking-[0.2em] uppercase leading-none">
-                  Services
-                </div>
-              </div>
-            </div>
+            <div className="mb-5">
+              <Image
+                src="/LOGO.jpg"
+                alt="LV Welding Services"
+                width={160}
+                height={56}
+                className="h-12 w-auto object-contain"
+              />
+            </div> </div>
 
             <p className="text-forge-gray text-sm leading-relaxed mb-6">
               Custom metal fabrication built to last. Serving South Florida since 2018
