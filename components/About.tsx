@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { CheckCircle2 } from 'lucide-react'
+import Image from 'next/image'
 
 const highlights = [
   'Licensed & fully insured — every project',
@@ -22,7 +23,7 @@ export default function About() {
 
       <div className="container-max section-padding">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Left — visual */}
+          {/* Left — team photo */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -30,21 +31,17 @@ export default function About() {
             transition={{ duration: 0.7 }}
             className="relative"
           >
-            {/*
-              PHOTO PLACEHOLDER
-              Replace with a real team or shop photo:
-              <Image src="/images/about-shop.jpg" alt="LV Welding team" fill className="object-cover rounded-xl" />
-            */}
             <div className="relative w-full rounded-xl overflow-hidden bg-forge-charcoal border border-white/5"
               style={{ height: '480px' }}>
-              <div className="absolute inset-0 bg-gradient-to-br from-forge-steel to-forge-dark flex items-center justify-center">
-                <div className="text-center opacity-20">
-                  <div className="w-20 h-20 border-2 border-forge-gray rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="font-display font-800 text-4xl text-forge-gray">LV</span>
-                  </div>
-                  <p className="text-forge-gray text-xs tracking-widest uppercase">Team Photo</p>
-                </div>
-              </div>
+              <Image
+                src="/lisbel.png"
+                alt="LV Welding Team"
+                fill
+                className="object-cover object-center"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+              {/* Subtle gradient overlay at bottom for stat cards */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
 
               {/* Stat cards overlaid */}
               <div className="absolute bottom-6 left-6 right-6 grid grid-cols-3 gap-3">
