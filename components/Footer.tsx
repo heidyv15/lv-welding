@@ -58,7 +58,7 @@ export default function Footer() {
                 className="flex items-center gap-3 text-forge-light hover:text-white text-sm transition-colors group"
               >
                 <Phone size={14} className="text-forge-red group-hover:text-forge-red" />
-                (786) 744-7479
+                (786) 506-6327
               </a>
               <a
                 href="sms:7865066327"
