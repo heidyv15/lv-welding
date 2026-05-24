@@ -106,7 +106,7 @@ export default function Hero() {
               className="flex items-center gap-2 border border-white/20 text-white font-bold text-base px-8 py-4 rounded hover:bg-white/10 active:scale-95 transition-all duration-200 uppercase tracking-wider"
             >
               <Phone size={18} />
-              (786) 5066327
+              (786) 506-6327
             </a>
 
             <button
