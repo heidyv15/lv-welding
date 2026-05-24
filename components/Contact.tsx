@@ -134,7 +134,7 @@ export default function Contact() {
 
             {/* Google Business link */}
             <a
-              href="https://www.lvweldingservices.com"
+              href="https://www.google.com/search?q=LV+Welding+Services%2C+9921+NW+80th+Ave+unit+1+J%2C+Hialeah+Gardens%2C+FL+33016&oq=lv+&gs_lcrp=EgZjaHJvbWUqCAgAEEUYJxg7MggIABBFGCcYOzIICAEQRRgnGDsyBggCEEUYOzIGCAMQRRg8MgYIBBBFGDwyBggFEEUYPDIGCAYQRRg8MgYIBxBFGDzSAQgyMzI3ajBqNKgCA7ACAfEFzBXMzeNO66A&sourceid=chrome&ie=UTF-8"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 w-full py-3 border border-white/10 hover:border-white/25 rounded-xl text-forge-gray hover:text-white text-sm transition-all duration-200"
